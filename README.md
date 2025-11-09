@@ -2,6 +2,8 @@
 
 This is a minimalist example of LLM-based chatbot using OpenRouter API and is hosted on Vercel. 
 
+[Working example](https://freeagent.vercel.app/)
+
 Before you start, you need: 
 * a [Vercel](https://vercel.com/) hobby account 
 * an [OpenRouter](https://openrouter.ai/) token
