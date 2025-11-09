@@ -1,0 +1,85 @@
+"use client";
+
+import { useState } from "react";
+
+type Message = { id: string; role: "user" | "assistant"; text: string };
+
+export default function Page() {
+  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+
+  const generateId = () => `${Date.now()}-${Math.random()}`;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    const userMessage: Message = { id: generateId(), role: "user", text: input };
+    setMessages((prev) => [...prev, userMessage]);
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...messages, userMessage], // send all previous messages + current input
+        }),
+      });
+
+      const data = await res.json();
+
+      const assistantMessage: Message = { id: generateId(), role: "assistant", text: data.text };
+      setMessages((prev) => [...prev, assistantMessage]);
+
+      setInput("");
+      setStatus("idle");
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
+  };
+
+  return (
+    <main style={{ padding: 24, maxWidth: 600, margin: "0 auto" }}>
+      <h1>FreeAgent</h1>
+      <div>A zero-cost, minimalist LLM agent</div>
+      <div style={{ marginBottom: 16 }}>
+        {messages.map((m) => (
+          <div key={m.id} style={{ marginBottom: 8 }}>
+            <strong>{m.role}:</strong> {m.text}
+          </div>
+        ))}
+      </div>
+
+      <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8 }}>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Say something…"
+          style={{ flex: 1 }}
+        />
+        <button type="submit" disabled={status === "loading"}>
+          {status === "loading" ? "Sending..." : "Send"}
+        </button>
+      </form>
+      This chatbot is powered by
+      <a
+        href="https://openrouter.ai/">
+        OpenRouter
+      </a> 
+      and hosted on 
+      <a
+        href="https://vercel.com/">
+        Vercel
+      </a>.<br />
+      <a
+        href="https://github.com/th86/freebot/"
+        >
+        View this project on GitHub
+      </a>
+      {status === "error" && <p style={{ color: "red" }}>Something went wrong.</p>}
+    </main>
+  );
+}
