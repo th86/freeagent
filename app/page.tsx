@@ -64,7 +64,7 @@ export default function Page() {
           {status === "loading" ? "Sending..." : "Send"}
         </button>
       </form>
-      This chatbot is powered by
+      This chatbot is powered by&nbsp;
       <a
         href="https://openrouter.ai/">
         OpenRouter
@@ -73,7 +73,7 @@ export default function Page() {
         href="https://google.com/">
         Google
       </a> 
-      and hosted on 
+      &nbsp;and hosted on&nbsp; 
       <a
         href="https://vercel.com/">
         Vercel
