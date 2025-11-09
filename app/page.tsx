@@ -68,6 +68,10 @@ export default function Page() {
       <a
         href="https://openrouter.ai/">
         OpenRouter
+      </a> , 
+      <a
+        href="https://google.com/">
+        Google
       </a> 
       and hosted on 
       <a
@@ -75,7 +79,7 @@ export default function Page() {
         Vercel
       </a>.<br />
       <a
-        href="https://github.com/th86/freebot/"
+        href="https://github.com/th86/freeagent/"
         >
         View this project on GitHub
       </a>
