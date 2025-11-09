@@ -68,7 +68,7 @@ export default function Page() {
       <a
         href="https://openrouter.ai/">
         OpenRouter
-      </a> , 
+      </a>,&nbsp; 
       <a
         href="https://google.com/">
         Google
