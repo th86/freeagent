@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "ai": "latest",
-    "@ai-sdk/react": "3.0.0",
+    "@ai-sdk/react": "2.0.119",
     "@openrouter/ai-sdk-provider": "latest",
     "react": "19.0.1",
     "react-dom": "19.0.1",
-    "next": "15.4.8"
+    "next": "15.4.10"
   },
   "devDependencies": {
     "typescript": "^5",
