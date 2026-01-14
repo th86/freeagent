@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     const searchResults = await googleSearch(userMessage);
 
     // Add search result context as a system message
-    const model = openrouter("deepseek/deepseek-r1-0528-qwen3-8b:free");
+    const model = openrouter("deepseek/deepseek-r1-0528:free");
 
     const result = await generateText({
       model,
