@@ -12,14 +12,14 @@
     "ai": "latest",
     "@ai-sdk/react": "latest",
     "@openrouter/ai-sdk-provider": "latest",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "19.0.1",
+    "react-dom": "19.0.1",
     "next": "15.4.8"
   },
   "devDependencies": {
     "typescript": "^5",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.1"
   }
 }
